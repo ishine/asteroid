@@ -24,8 +24,7 @@ def preprocess_one_dir(in_dir, out_dir, out_filename):
 
 def preprocess(inp_args):
     """ Create .json files for all conditions."""
-    speaker_list = ['mix_both', 'mix_clean',
-                    'mix_single', 's1', 's2', 'noise']
+    speaker_list = ['mix'] + [f"s{n+1}" for n in range(inp_args.n_src)]
     for data_type in ['tr', 'cv', 'tt']:
         for spk in speaker_list:
             preprocess_one_dir(os.path.join(inp_args.in_dir, data_type, spk),
@@ -37,6 +36,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser("WHAM data preprocessing")
     parser.add_argument('--in_dir', type=str, default=None,
                         help='Directory path of wham including tr, cv and tt')
+    parser.add_argument('--n_src', type=int, default=2,
+                        help='Number of sources in wsj0-mix')
     parser.add_argument('--out_dir', type=str, default=None,
                         help='Directory path to put output files')
     args = parser.parse_args()

@@ -29,15 +29,17 @@ Don't hesitate to [join the slack][slack-invite]
 and ask questions / suggest new features there as well !  
 Asteroid is intended to be a __community-based project__ 
 so hop on and help us !
-## Table of contents
+## Contents
 - [Installation](#installation)
-- [Tutorials](#highlights)
+- [Tutorials](#tutorials)
 - [Running a recipe](#running-a-recipe)
 - [Available recipes](#available-recipes)
 - [Supported datasets](#supported-datasets)
 - [Calls for contributions](#contributing)
+- [Citing us](#citing)
 
 ## Installation
+([↑up to contents](#contents))  
 In order to install Asteroid, clone the repo and install it using 
 pip or python :
 ```bash
@@ -57,13 +59,15 @@ pip install numpy Cython
 pip install asteroid
 ```
 
-## Highlights
+## Tutorials
+([↑up to contents](#contents))  
 Here is a list of notebooks showing example usage of Asteroid's features.
 - [Permutation invariant training wrapper `PITLossWrapper`][pitwrapper_nb]
 - [Filterbank API][fb_nb]
 
 
 ## Running a recipe
+([↑up to contents](#contents))  
 Running the recipes requires additional packages in most cases, 
 we recommend running :
 ```bash
@@ -78,16 +82,18 @@ cd egs/wham/ConvTasNet
 More information in [egs/README.md](./egs).
 
 ## Available recipes 
+([↑up to contents](#contents))  
 * [x] [ConvTasnet](./egs/wham/ConvTasNet) ([Luo et al.](https://arxiv.org/abs/1809.07454))
 * [x] [Tasnet](./egs/whamr/TasNet) ([Luo et al.](https://arxiv.org/abs/1711.00541))
 * [x] [Deep clustering](./egs/wsj0-mix/DeepClustering) ([Hershey et al.](https://arxiv.org/abs/1508.04306) and [Isik et al.](https://arxiv.org/abs/1607.02173))
-* [ ] Chimera ++ ([Luo et al.](https://arxiv.org/abs/1611.06265) and [Wang et al.](https://ieeexplore.ieee.org/document/8462507))
+* [x] [Chimera ++](./egs/wsj0-mix/DeepClustering) ([Luo et al.](https://arxiv.org/abs/1611.06265) and [Wang et al.](https://ieeexplore.ieee.org/document/8462507))
 * [x] [DualPathRNN](./egs/wham/DPRNN) ([Luo et al.](https://arxiv.org/abs/1910.06379))
 * [x] [Two step learning](./egs/wham/TwoStep)([Tzinis et al.](https://arxiv.org/abs/1910.09804))
 * [ ] Open-Unmix (coming) ([Stöter et al.](https://sigsep.github.io/open-unmix/))
 * [ ] Wavesplit (coming) ([Zeghidour et al.](https://arxiv.org/abs/2002.08933))
 
 ## Supported datasets
+([↑up to contents](#contents))  
 * [x] [WSJ0-2mix](./egs/wsj0-mix) / WSJ03mix ([Hershey et al.](https://arxiv.org/abs/1508.04306))
 * [x] [WHAM](./egs/wham) ([Wichern et al.](https://arxiv.org/abs/1907.01160))
 * [x] [WHAMR](./egs/whamr) ([Maciejewski et al.](https://arxiv.org/abs/1910.10279))
@@ -97,6 +103,7 @@ More information in [egs/README.md](./egs).
 * [ ] FUSS (Coming) ([Wisdom et al.](https://zenodo.org/record/3694384#.XmUAM-lw3g4))
 
 ## Contributing
+([↑up to contents](#contents))  
 We are always looking to expand our coverage of the source separation 
 and speech enhancement research, the following is a list of 
 things we're missing. 
@@ -106,11 +113,10 @@ You want to contribute? This is a great place to start !
 * DeepCASA ([Liu and Want](https://arxiv.org/abs/1904.11148))
 * VCTK Test sets from [Kadioglu et al.](https://arxiv.org/pdf/2002.08688.pdf)
 * Interrupted and cascaded PIT ([Yang et al.](https://arxiv.org/abs/1910.12706))
-* Consistency contraints ([Wisdom et al.](https://ieeexplore.ieee.org/abstract/document/8682783))
-* Backpropagable STOI and PESQ.
+* ~Consistency contraints ([Wisdom et al.](https://ieeexplore.ieee.org/abstract/document/8682783))~
+* ~Backpropagable STOI and PESQ.~
 * Parametrized filterbanks from [Tukuljac et al.](https://openreview.net/forum?id=HyewT1BKvr)
-* End-to-End MISI ([Wang et al.](https://arxiv.org/abs/1804.10204))
-* Modified MISI ([Wang et al.](https://www.isca-speech.org/archive/Interspeech_2019/pdfs/3242.pdf))
+* ~End-to-End MISI ([Wang et al.](https://arxiv.org/abs/1804.10204))~
 
 
 Don't forget to read our [contributing guidelines](./CONTRIBUTING.md).
@@ -136,6 +142,7 @@ click on the tensorboard URL given on the remote, it's just more practical.
 
 
 ## Guiding principles
+([↑up to contents](#contents))  
 * __Modularity.__ Building blocks are thought and designed to be seamlessly
 plugged together. Filterbanks, encoders, maskers, decoders and losses are 
 all common building blocks that can be combined in a 
@@ -147,6 +154,21 @@ easily.
 results with data preparation, system design, training and evaluation in a 
 single script. This is an essential tool for the community !
 
+## Citing Asteroid
+([↑up to contents](#contents))  
+If you loved using Asteroid and you want to cite us, use this :
+```BibTex
+@article{Pariente2020Asteroid,
+    title={Asteroid: the PyTorch-based audio source separation toolkit for researchers},
+    author={Manuel Pariente and Samuele Cornell and Joris Cosentino and Sunit Sivasankaran and 
+            Efthymios Tzinis and Jens Heitkaemper and Michel Olvera and Fabian-Robert Stöter and 
+            Mathieu Hu and Juan M. Martín-Doñas and David Ditter and Ariel Frank and Antoine Deleforge 
+            and Emmanuel Vincent},
+    year={2020},
+    journal={arXiv preprint arXiv:2005.04132},
+    primaryClass={eess.AS}
+}
+```
 
 [comment]: <> (Badge)
 [travis]: https://travis-ci.com/mpariente/asteroid
