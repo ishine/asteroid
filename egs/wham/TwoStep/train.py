@@ -48,7 +48,7 @@ def get_data_loaders(conf, train_part='filterbank'):
                                   train_part[0] + '_batch_size'],
                               num_workers=conf[train_part + '_training'][
                                   train_part[0] + '_num_workers'])
-    val_loader = DataLoader(val_set, shuffle=True, drop_last=True,
+    val_loader = DataLoader(val_set, shuffle=False, drop_last=True,
                             batch_size=conf[train_part + '_training'][
                                 train_part[0] + '_batch_size'],
                             num_workers=conf[train_part + '_training'][
@@ -82,7 +82,7 @@ def train_model_part(conf, train_part='filterbank', pretrained_filterbank=None):
 
     # Define Loss function.
     loss_func = PITLossWrapper(PairwiseNegSDR('sisdr', zero_mean=False),
-                               mode='pairwise')
+                               pit_from='pw_mtx')
     system = SystemTwoStep(model=model, loss_func=loss_func,
                            optimizer=optimizer, train_loader=train_loader,
                            val_loader=val_loader, scheduler=scheduler,

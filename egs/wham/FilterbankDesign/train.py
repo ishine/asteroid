@@ -30,7 +30,7 @@ def main(conf):
     train_loader = DataLoader(train_set, shuffle=True,
                               batch_size=conf['training']['batch_size'],
                               num_workers=conf['training']['num_workers'])
-    val_loader = DataLoader(val_set, shuffle=True,
+    val_loader = DataLoader(val_set, shuffle=False,
                             batch_size=conf['training']['batch_size'],
                             num_workers=conf['training']['num_workers'])
     conf['masknet'].update({'n_src': train_set.n_src})
@@ -48,7 +48,7 @@ def main(conf):
         yaml.safe_dump(conf, outfile)
 
     # Define Loss function.
-    loss_func = PITLossWrapper(pairwise_neg_sisdr, mode='pairwise')
+    loss_func = PITLossWrapper(pairwise_neg_sisdr, pit_from='pw_mtx')
     # loss_class = PITLossContainer(pairwise_neg_sisdr, n_src=train_set.n_src)
     # Checkpointing callback can monitor any quantity which is returned by
     # validation step, defaults to val_loss here (see System).
