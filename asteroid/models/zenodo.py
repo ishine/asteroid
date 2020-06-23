@@ -2,7 +2,6 @@ import os
 import json
 import requests
 from io import BufferedReader, BytesIO
-import torch
 
 
 class Zenodo(object):
@@ -32,7 +31,7 @@ class Zenodo(object):
             api_key = os.getenv('ACCESS_TOKEN', None)
         if api_key is None:
             raise ValueError(
-                'Need to set `api_key` somehow. Either through the functions'
+                'Need to set `api_key` somehow. Either through the class'
                 'arguments or by setting ACCESS_TOKEN env variable in bash.'
             )
         self.use_sandbox = use_sandbox
@@ -174,18 +173,3 @@ class Zenodo(object):
         all_depositions = self.get_deposition()
         for dep in all_depositions.json():
             self.remove_deposition(dep["id"])
-
-
-# Probably remove that.
-# sandbox_asteroid_url = 'https://sandbox.zenodo.org/deposit/new?c=asteroid-models'
-# zenodo_asteroid_url = 'https://zenodo.org/deposit/new?c=asteroid-models'
-class AsteroidZenodo(Zenodo):
-    REQUIRED_KEYS = []
-    def share_model(self, model_path):
-        # Load model_path
-        model = torch.load(model_path)
-        # Assert all keys are there
-        if not all(k in model.keys() for k in self.REQUIRED_KEYS):
-            missing = [k for k in self.REQUIRED_KEYS if k not in model.keys()]
-            raise ValueError(f"Expected all keys {self.REQUIRED_KEYS} but "
-                             f"{missing} were missing.")

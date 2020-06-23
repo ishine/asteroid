@@ -4,12 +4,47 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
-## [Next release] - YYYY-MM-DD
+## [0.3.0] - 2020-06-16
 
 #### Added 
+[src & egs] Publishing pretrained models !! (wham/ConvTasNet) (#125)
+[src] Add License info on all (but MUSDB) supported datasets (#130)
+[src & egs] Kinect-WSJ  Dataset and Single channel DC Recipe (#131)
+[src] Add licenses info and dataset name for model publishing
+[docs] Add getting started notebook
+[docs] Add notebook summary table
+[egs] Enable pretrained models sharing on LibriMix (#132)
+[egs] Enable wham/DPRNN model sharing (#135)
+[model_cards] Add message to create model card after publishing
+[model_cards] Add ConvTasNet_LibriMix_sepnoisy.md model card (Thanks @JorisCos)
+[src & egs] Adding AVSpeech AudioVisual source separation (#127)
+[src] Instantiate LibriMix from download with class method (#144)
+[src] Add show_available_models in asteroid init
+[src & tests] Bidirectional residual RNN (#146)
+[src & tests] Support filenames at the input of `separate` (#154)
 #### Changed
+[src & hub] Remove System to reduce torch.hub deps (back to #112)
+[src & tests & egs] Refactor utils files into folder (#120)
+[egs] GPU `id` defaults to $CUDA_VISIBLE_DEVICES in all recipes (#128)
+[egs] set -e in all recipes to exit or errors (#129)
+[egs] Remove gpus args in all train.py (--id controls that in run.sh)  (#134)
+[hub] Change dataset name in LibriMix (fix)
+[src] Add targets argument (to stack sources) to MUSDB18 (#143)
+[notebooks] Rename examples to notebooks
+[src] Enable using Zenodo without api_key argument (set ACCESS_TOKEN env variable)
 #### Deprecated
+[src] Deprecate inputs_and_masks.py (#117)
+[src] Deprecate PITLossWrapper `mode` argument (#119)
 #### Fixed
+[src] Fix PMSQE loss (NAN backward + device placement) (#121)
+[egs] Fix checkpoint.best_k_models in new PL version (#123)
+[egs] Fix: remove shuffle=True in validation Loader (lightning error) (#124)
+[egs] Corrections on LibriMix eval and train and evals scripts  (#137)
+[egs] Fix wavfiles saving in eval.py for enh_single and enh_both tasks (closes #139)
+[egs] Fix wavfiles saving in eval.py for enh tasks (estimates)
+[egs] Fix #139 : correct squeeze for enhancement tasks (#142)
+[egs] Fix librimix run.sh and eval.py (#148)
+
 
 ## [0.2.1] - 25/05/2020
 #### Added 
